@@ -1,9 +1,6 @@
 ﻿using System;
 namespace Assignment02.ClassLibrary {
-
-
-
-    public class Student {
+    public record ImmutableStudent {
 
         public enum StatusEnum {
             New,
@@ -13,11 +10,11 @@ namespace Assignment02.ClassLibrary {
         }
 
         public int Id { get; init; }
-        public string GivenName { get; set; }
-        public string Surname { get; set; }
-        public DateTime StartDate { get; set; }
-        public DateTime EndDate { get; set; }
-        public DateTime GraduationDate { get; set; }
+        public string GivenName { get; init; }
+        public string Surname { get; init; }
+        public DateTime StartDate { get; init; }
+        public DateTime EndDate { get; init; }
+        public DateTime GraduationDate { get; init; }
         public StatusEnum Status {
             get {
                 if (DateTime.Now < StartDate) {
@@ -36,17 +33,5 @@ namespace Assignment02.ClassLibrary {
             }
         }
 
-        public Student(string gn, string sn, DateTime sd, DateTime ed, DateTime gd) {
-            GivenName = gn;
-            Surname = sn;
-            StartDate = sd;
-            EndDate = ed;
-            GraduationDate = gd;
-            Console.WriteLine("New student!");
-        }
-
-        public string toString() {
-            return $"{GivenName} {Surname} ({Status}) | {StartDate} - {EndDate} [{GraduationDate}] {Id}";
-        }
     }
 }
